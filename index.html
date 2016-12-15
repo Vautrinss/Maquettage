@@ -57,11 +57,12 @@
 
 
 		function addcircle(){
-
+				var x = document.getElementById("myColor").value;
 			var circle = new fabric.Circle({
 			top:140,
 			left:230,
-			radius:75
+			radius:75,
+			fill: x
 
 
 		});
@@ -105,7 +106,7 @@
 
 
 		backgroundColor.onchange = function() {
-            canvas.getActiveObject().set("fill", 'blue');
+            canvas.getActiveObject().set("fill", 'red');
             canvas.renderAll();
         };
 
@@ -131,6 +132,7 @@
 		<button onclick="addcircle()">
 			Add circle
 		</button>
+			Text to display <input type="text" value="color circle">
 		<button onclick="addtext()">
 			Add Text
 		</button>
@@ -142,7 +144,7 @@
 		</button>
 		Text to display <input type="text" id="myText" value="Custom Text Here">
 		<button onclick="addcustomtext()">Custom Text</button>
-		Select your favorite text color: <input type="color" class="myColor"><button onchange="textcolor">Try it</button><br>
+		Select your favorite text color: <input type="color" id="myColor" class="myColor"><button onchange="textcolor">Try it</button><br>
 
 	<p id="demo">
 
