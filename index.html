@@ -113,8 +113,16 @@
 		function changecolor() {
 		var textcolor = document.getElementById("myColor").value;
 		var activeObjectcolor = canvas.getActiveObject();
-        activeObjectcolor.fill = textcolor;
+        canvas.getActiveObject().setFill(textcolor);
         canvas.renderAll();
+
+		}
+
+		function changeSize() {
+		var sizeT = document.getElementById("sizeText").value;
+		var activeObjectcolor = canvas.getActiveObject();
+				canvas.getActiveObject().setFontSize(sizeT);
+				canvas.renderAll();
 
 		}
 
@@ -156,7 +164,7 @@
 		<button onclick="addcircle()">
 			Add circle
 		</button>
-			Text to display <input type="text" value="color circle">
+			Text to display <input type="text" placeholder="text">
 		<button onclick="addtext()">
 			Add Text
 		</button>
@@ -174,7 +182,8 @@
 		</button>
 		Text to display <input type="text" id="myText" value="Custom Text Here">
 		<button onclick="addcustomtext()">Custom Text</button>
-		Select your favorite text color: <input type="color" id="myColor" class="myColor"><button onchange="textcolor">Try it</button><br>
+		Select your favorite text color: <input type="color" id="myColor" class="myColor"><button onClick="changecolor(); changeSize()" onchange="changecolor()">Try it</button><br>
+		Select size : <input type="number" id="sizeText">
 
 	<p id="demo">
 
