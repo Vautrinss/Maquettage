@@ -117,6 +117,12 @@
         canvas.renderAll();
 
 		}
+
+		function expIMG() {
+			window.open(canvas.toDataURL('png'));
+		}
+
+
 </script>
 
 
@@ -141,6 +147,9 @@
 		</button>
 		<button onclick="changebackground()">
 			Change Bg
+		</button>
+		<button onclick="expIMG()">
+			IMAGE
 		</button>
 		Text to display <input type="text" id="myText" value="Custom Text Here">
 		<button onclick="addcustomtext()">Custom Text</button>
