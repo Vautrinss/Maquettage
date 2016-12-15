@@ -13,7 +13,7 @@
 
 	</head>
 	<body>
-		<canvas id="canvas" width="1800" height="600"
+		<canvas id="canvas" width="500" height="300"
 			style="border:1px solid #000000;">
 		</canvas>
 
@@ -118,9 +118,27 @@
 
 		}
 
-		function expIMG() {
-			window.open(canvas.toDataURL('png'));
+		function downloadURI(uri, name) {
+			var link = document.createElement("a");
+  			link.download = name;
+			link.href = uri;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+			delete link;
 		}
+
+		function expIMG() {
+			downloadURI(canvas.toDataURL(), "billet.jpeg");
+		}
+
+
+		function expJSON(){
+			json = encodeURI(canvas.toJSON());
+			window.open(json);
+		}
+
+
 
 
 </script>
@@ -150,6 +168,9 @@
 		</button>
 		<button onclick="expIMG()">
 			IMAGE
+		</button>
+		<button onclick="expJSON()">
+			JSON
 		</button>
 		Text to display <input type="text" id="myText" value="Custom Text Here">
 		<button onclick="addcustomtext()">Custom Text</button>
