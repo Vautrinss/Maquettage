@@ -118,6 +118,14 @@
 
 		}
 
+		function changeSize() {
+		var sizeT = document.getElementById("sizeText").value;
+		var activeObjectcolor = canvas.getActiveObject();
+				canvas.getActiveObject().setFontSize(sizeT);
+				canvas.renderAll();
+
+		}
+
 		function expIMG() {
 			window.open(canvas.toDataURL('png'));
 		}
@@ -153,7 +161,8 @@
 		</button>
 		Text to display <input type="text" id="myText" value="Custom Text Here">
 		<button onclick="addcustomtext()">Custom Text</button>
-		Select your favorite text color: <input type="color" id="myColor" class="myColor"><button onClick="changecolor()" onchange="changecolor()">Try it</button><br>
+		Select your favorite text color: <input type="color" id="myColor" class="myColor"><button onClick="changecolor(); changeSize()" onchange="changecolor()">Try it</button><br>
+		Select size : <input type="number" id="sizeText">
 
 	<p id="demo">
 
