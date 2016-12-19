@@ -93,6 +93,11 @@
 
 		}
 
+		function removeAll(){
+			canvas.clear();
+			canvas.renderAll();
+		}
+
 
 
 		backgroundColor.onchange = function() {
@@ -137,7 +142,7 @@
 		}
 
 		function changebackground(){
-			var couleur = document.getElementById("myColor2");
+			var couleur = fromRgb(document.getElementById("myColor2"));
 			canvas.setBackgroundColor(couleur, canvas.renderAll.bind(canvas));
 
 		}
@@ -162,6 +167,8 @@
 			canvas.renderAll();
 		}
 
+
+
 </script>
 
 
@@ -173,12 +180,12 @@
 		<ul>
 		<li>
 		<button onclick="addsquare()">
-			Add square
+			Ajout carré
 		</button>
 		</li>
 		<li>
 		<button onclick="addcircle()">
-			Add circle
+			Ajout Cercle
 		</button>
 		</li>
 		<li>
@@ -190,26 +197,31 @@
 				<option>Simpson</option>
 			</select>
 		<button onclick="addtext()">
-			Add Text
+			Ajout texte
 		</button>
 		</li>
 		<li>
 		<button onclick="removeme()">
-			Remove
+			Supprimer
+		</button>
+		</li>
+		<li>
+		<button onclick="removeAll()">
+			Tout supprimer
 		</button>
 		</li>
 		<li>
 		Changez la couleur de l'arrière plan
 		<input type="color" id="myColor2" class="myColor">
 		<button onclick="changebackground()">
-			Change Bg
+			Changer
 		</button>
 		</li>
 		<li>
 		Changez l'image de l'arrière plan
-		<input type="text" id="imageURL" class="myColor">
+		<input type="text" id="imageURL" >
 		<button onclick="ajouterimagebackground()">
-			Change Bg
+			Changer
 		</button>
 		</li>
 		<li>
@@ -246,7 +258,7 @@
 		<button onclick="changerLongueur()">
 			changer
 		</button>
-		</li>
+		
 </ul>
 
 	<p id="demo">
