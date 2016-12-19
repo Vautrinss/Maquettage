@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maquettage</title>
+
+	<!-- <script type="text/javascript" src="colpick.js"></script>
+	<link rel="stylesheet" href="colpick.css" type="text/css"/> -->
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.1/fabric.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<!-- <script type="text/javascript" src="canvas.js"></script>
+	<script type="text/javascript" src="jscolor.js"></script> -->
+	<link href="style.css" rel="stylesheet" media="all" type="text/css">
+	<script src="https://use.fontawesome.com/34ba58b6a4.js"></script>
+</head>
+<body>
+	<aside>
+		<ul class="menu" id="menu_add">
+			<h3>Ajouts</h3>
+			<li>
+				<button onclick="addsquare()">Add square</button>
+			</li>
+			<li>
+				<button onclick="addcircle()">Add circle</button>
+			</li>
+			<li>
+				Texte : <input type="text" placeholder="text" id="texte">
+				Police : 
+				<select name="select" id="mypolice">
+					<option>Arial</option>
+					<option>Times new roman</option>
+					<option>Simpson</option>
+				</select>
+				<button onclick="addtext()">Add Text</button>
+			</li>
+			<li>
+				Ajoutez une image : 
+				<input type="file" id="imageImport">
+				<button onclick="ajouterimage()">Ajouter</button>
+			</li>
+		</ul>
+
+		<ul class="menu" id="menu_select">
+			<h3>Sélection</h3>
+			<li class="menu_select_generic menu_select_generic_remove">
+				<a onclick="removeme()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			</li>
+			<li class="menu_select_generic menu_select_generic_color">
+				Changez la couleur de l'objet sélectionné: <input type="color" id="myColor" class="myColor"> 
+				Changer la taille du texte selectionné: <input type="number" id="sizeText">
+				<button onClick="changecolor(); changeSize()" onchange="changecolor()">Appliquer</button><br>
+			</li>
+		</ul>
+
+		<ul class="menu" id="menu_settings">
+			<h3>Paramètres</h3>
+			<li>
+				Changez la couleur de l'arrière plan
+				<input type="color" id="pickBgColor" class="myColor" value="#ffffff">
+				<button onclick="changebackground()">Change Bg</button>
+			</li>
+			<li>
+				Changez l'image de l'arrière plan
+				<input type="text" id="imageURL" class="myColor">
+				<button onclick="ajouterimagebackground()">Change Bg</button>
+			</li>
+			<li>
+				Changez la largeur du ticket : 
+				<input type="number" id="largeurTicket" value="1000">
+				<button onclick="changerLargeur()">Changer</button>
+			</li>
+			<li>
+				Changez la hauteur du ticket : 
+				<input type="number" id="longueurTicket" value="300">
+				<button onclick="changerLongueur()">Changer</button>
+			</li>
+		</ul>
+
+		<ul class="menu" id="menu_export">
+			<h3>Exporter</h3>
+			<li>
+				<a onclick="expIMG()">IMAGE</a>
+			</li>
+			<li>
+				<a onclick="expJSON()">JSON</a>
+			</li>
+		</ul>
+	</aside>
+	
+	<section>
+		<canvas id="canvas" width="1000" height="300" style="border:1px solid #000000;"></canvas>
+	</section>
+
+	<script type="text/javascript" src="init.js"></script>
+
+	</body>
+</html>

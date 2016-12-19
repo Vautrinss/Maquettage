@@ -1,14 +1,42 @@
-.bouton a {
-display:block;
-width:150px;
-line-height:50px;
-text-align:center;
-vertical-align:middle;
-background:url(images/bouton-noir.png) no-repeat;
-color:white;
-text-decoration:none;
-}
-.bouton a:hover {
-background:url(images/bouton-noir-2.png) no-repeat;
+body {
+    font-family: sans-serif;
 }
 
+.bouton a {
+    display:block;
+    width:150px;
+    line-height:50px;
+    text-align:center;
+    vertical-align:middle;
+    background:url(images/bouton-noir.png) no-repeat;
+    color:white;
+    text-decoration:none;
+}
+.bouton a:hover {
+    background:url(images/bouton-noir-2.png) no-repeat;
+}
+#canvas {
+    width: 100%;
+    height: 90%;
+}
+
+#menu_select {
+    display: none;
+}
+
+h3 {
+    margin-bottom: 0;
+}
+
+aside {
+    height: 100%;
+    width: 250px;
+    background-color: #fff;
+    position: fixed!important;
+    z-index: 1;
+    overflow: auto;
+}
+section {
+    transition: margin-left 0s;
+    margin-left: 280px;
+}
