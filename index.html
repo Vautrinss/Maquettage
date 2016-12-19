@@ -138,13 +138,16 @@
 
 		function changebackground(){
 			var couleur = document.getElementById("myColor2");
-			canvas.setBackgroundColor(couleur);
-			canvas.renderAll();
+			canvas.setBackgroundColor(couleur, canvas.renderAll.bind(canvas));
 
 		}
 
-		function ajouterimage(){
-		    
+		function ajouterimagebackground(){
+			var url = document.getElementById("imageURL").value;
+		    fabric.Image.fromURL(url, function(img) {
+   img.set({width: canvas.width, height: canvas.height, originX: 'left', originY: 'top'});
+   canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+});
 		}
 
 		function changerLargeur(){
@@ -203,6 +206,13 @@
 		</button>
 		</li>
 		<li>
+		Changez l'image de l'arrière plan
+		<input type="text" id="imageURL" class="myColor">
+		<button onclick="ajouterimagebackground()">
+			Change Bg
+		</button>
+		</li>
+		<li>
 		<button onclick="expIMG()">
 			IMAGE
 		</button>
@@ -218,12 +228,12 @@
 		</li>
 		<li>
 		Ajoutez une image : 
-		<input type="file" id="imageURL">
+		<input type="file" id="imageImport">
 		<button onclick="ajouterimage()">
 			ajouter
 		</button>
 		</li>
-
+		<li>
 		changez la largeur du ticket : 
 		<input type="number" id="largeurTicket">
 		<button onclick="changerLargeur()">
