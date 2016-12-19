@@ -9,11 +9,13 @@
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 	<!-- <script type="text/javascript" src="canvas.js"></script>
 	<script type="text/javascript" src="jscolor.js"></script> -->
+	<link href="style/semantic.min.css" rel="stylesheet" media="all" type="text/css">
 	<link href="style.css" rel="stylesheet" media="all" type="text/css">
 	<script src="https://use.fontawesome.com/34ba58b6a4.js"></script>
+	<script type="text/javascript" src="style/semantic.min.js"></script>
 </head>
 <body>
-	<aside>
+	<div class="ui vertical sticky menu fixed top">
 		<ul class="menu" id="menu_add">
 			<h3>Ajouts</h3>
 			<li>
@@ -84,13 +86,15 @@
 				<a onclick="expJSON()">JSON</a>
 			</li>
 		</ul>
-	</aside>
+	</div>
 	
-	<section>
+	<div class="pusher">
 		<canvas id="canvas" width="1000" height="300" style="border:1px solid #000000;"></canvas>
-	</section>
+	</div>
 
 	<script type="text/javascript" src="init.js"></script>
+
+	<script>$('.ui.sidebar').sidebar('toggle');</script>
 
 	</body>
 </html>
