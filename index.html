@@ -10,7 +10,10 @@
 		<script src="//code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
 		<script src="canvas.js"></script>
 		<script type="text/javascript" src="jscolor.js"></script>
-		<link href="style.css" rel="stylesheet" media="all" type="text/css"> 
+		<link href="css/style.css" rel="stylesheet" media="all" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/semantic/semantic.min.css">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="css/semantic/semantic.min.js"></script>
 	</head>
 	<body>
 		<canvas id="canvas" width="600" height="300"
@@ -18,34 +21,21 @@
 		</canvas>
 
     <script>
-
 		var canvas = new fabric.Canvas('canvas');
 		canvas.backgroundColor = "silver";
 		ctx = document.getElementById("canvas").getContext("2d");
 		
 		canvas.renderAll();
-
-
 		function addtext(){
 		var texte = document.getElementById("texte").value;
 		var police = document.getElementById("mypolice").value;
 		var comicSansText = new fabric.Text(texte, {
   			fontFamily: police,
 		});
-
 		canvas.add(comicSansText);
 			canvas.renderAll();
-
 		}
-
-
-
-
-
 	
-
-
-
 		function addcircle(){
 				var x = document.getElementById("myColor").value;
 			var circle = new fabric.Circle({
@@ -53,74 +43,45 @@
 			left:230,
 			radius:75,
 			fill: x
-
-
 		});
 			canvas.add(circle);
 			canvas.renderAll();
 		}
-
-
-
-
-
-
 		function addsquare() {
-
-
 			var rect = new fabric.Rect({
             top : 100,
             left : 100,
             width : 60,
             height : 70
-
 			});
-
-
 			canvas.add(rect);
 			canvas.renderAll();
 		}
-
-
-
-
 		function removeme() {
-
 			var activeobject = canvas.getActiveObject();
-
          	canvas.remove(activeobject);
 			canvas.renderAll();
-
 		}
-
 		function removeAll(){
 			canvas.clear();
 			canvas.renderAll();
 		}
-
-
-
 		backgroundColor.onchange = function() {
             canvas.getActiveObject().set("fill", 'red');
             canvas.renderAll();
         };
-
 		function changecolor() {
 		var textcolor = document.getElementById("myColor").value;
 		var activeObjectcolor = canvas.getActiveObject();
         canvas.getActiveObject().setFill(textcolor);
         canvas.renderAll();
-
 		}
-
 		function changeSize() {
 		var sizeT = document.getElementById("sizeText").value;
 		var activeObjectcolor = canvas.getActiveObject();
 				canvas.getActiveObject().setFontSize(sizeT);
 				canvas.renderAll();
-
 		}
-
 		function downloadURI(uri, name) {
 			var link = document.createElement("a");
   			link.download = name;
@@ -130,23 +91,17 @@
 			document.body.removeChild(link);
 			delete link;
 		}
-
 		function expIMG() {
 			downloadURI(canvas.toDataURL(), "billet.jpeg");
 		}
-
-
 		function expJSON(){
 			json = encodeURI(canvas.toJSON());
 			window.open(json);
 		}
-
 		function changebackground(){
 			var couleur = fromRgb(document.getElementById("myColor2"));
 			canvas.setBackgroundColor(couleur, canvas.renderAll.bind(canvas));
-
 		}
-
 		function ajouterimagebackground(){
 			var url = document.getElementById("imageURL").value;
 		    fabric.Image.fromURL(url, function(img) {
@@ -154,21 +109,16 @@
    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
 });
 		}
-
 		function changerLargeur(){
 			var largeur = document.getElementById("largeurTicket").value;
 			canvas.setWidth(largeur) ;
 			canvas.renderAll();
 		}
-
 		function changerLongueur(){
 			var longueur = document.getElementById("longueurTicket").value;
 			canvas.setHeight(longueur) ;
 			canvas.renderAll();
 		}
-
-
-
 </script>
 
 
@@ -177,87 +127,110 @@
 		<script>
 
 		</script>
-		<ul>
+		<ul class="ui list">
 		<li>
-		<button onclick="addsquare()">
+		<button class="ui primary basic button" onclick="addsquare()">
 			Ajout carré
 		</button>
 		</li>
 		<li>
-		<button onclick="addcircle()">
+		<button class="ui primary basic button" onclick="addcircle()">
 			Ajout Cercle
 		</button>
 		</li>
 		<li>
-			votre texte <input type="text" placeholder="text" id="texte">
+			Votre texte
+		<div class="ui input">
+		<input type="text" placeholder="text" id="texte">
+		</div>
 			choisissez la police 
 			<select name="select" id="mypolice">
 				<option>Arial</option>
 				<option>Times new roman</option>
 				<option>Simpson</option>
 			</select>
-		<button onclick="addtext()">
+		<button class="ui primary basic button" onclick="addtext()">
 			Ajout texte
 		</button>
 		</li>
 		<li>
-		<button onclick="removeme()">
+		<button class="ui negative basic button" onclick="removeme()">
 			Supprimer
 		</button>
 		</li>
 		<li>
-		<button onclick="removeAll()">
+		<button class="ui negative basic button" onclick="removeAll()">
 			Tout supprimer
 		</button>
 		</li>
 		<li>
 		Changez la couleur de l'arrière plan
 		<input type="color" id="myColor2" class="myColor">
-		<button onclick="changebackground()">
+		<button class="ui primary basic button" onclick="changebackground()">
 			Changer
 		</button>
 		</li>
 		<li>
 		Changez l'image de l'arrière plan
 		<input type="text" id="imageURL" >
-		<button onclick="ajouterimagebackground()">
+		<button class="ui primary basic button" onclick="ajouterimagebackground()">
 			Changer
 		</button>
 		</li>
 		<li>
-		<button onclick="expIMG()">
+		<button class="ui primary basic button" onclick="expIMG()">
 			IMAGE
 		</button>
 		</li>
 		<li>
-		<button onclick="expJSON()">
+		<button class="ui primary basic button" onclick="expJSON()">
 			JSON
 		</button>
 		</li>
 		<li>
-		Changez a couleur de l'objet sélectionné: <input type="color" id="myColor" class="myColor">  Changer la taille du texte selectionné: <input type="number" id="sizeText"> <button onClick="changecolor(); changeSize()" onchange="changecolor()">Changer</button><br>
+		Changez a couleur de l'objet sélectionné:
+		<input type="color" id="myColor" class="myColor"> 
+		Changer la taille du texte selectionné:
+		<div class="ui input">
+		<input type="number" id="sizeText">
+		</div>
+		<button class="ui primary basic button" onClick="changecolor(); changeSize()" onchange="changecolor()">
+		Changer
+		</button>
+		<br>
 		
 		</li>
 		<li>
 		Ajoutez une image : 
 		<input type="file" id="imageImport">
-		<button onclick="ajouterimage()">
+		<button class="ui primary basic button" onclick="ajouterimage()">
 			ajouter
 		</button>
 		</li>
 		<li>
 		changez la largeur du ticket : 
+		<div class="ui right labeled input">
 		<input type="number" id="largeurTicket">
-		<button onclick="changerLargeur()">
+		<div class="ui basic label">
+			px
+ 		</div>
+ 		</div>
+		<button class="ui primary basic button" onclick="changerLargeur()">
 			changer
 		</button>
 		</li>
 		<li>
 		changez la hauteur du ticket : 
+		<div class="ui right labeled input">
 		<input type="number" id="longueurTicket">
-		<button onclick="changerLongueur()">
+		<div class="ui basic label">
+			px
+ 		</div>
+ 		</div>
+		<button class="ui primary basic button" onclick="changerLongueur()">
 			changer
 		</button>
+		</li>
 		
 </ul>
 
